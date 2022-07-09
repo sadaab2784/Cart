@@ -9,6 +9,11 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
+       // this.increaseQuantity = this.increaseQuantity.bind(this);
+    }
+
+    increaseQuantity = () => {
+        console.log('this', this.state);
     }
     render(){
         const { price, title, qty } = this.state;
@@ -23,11 +28,22 @@ class CartItem extends React.Component {
                     <div style={ { color: '#777' }}>Qty: {qty}</div>
                     <div className="cart-item-actions">
                         {/* Buttons */}
-                        <img alt="increase" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665680.png?token=exp=1657386291~hmac=7a60a6216654ef7eb265efca01251c06" />
-                        <img alt="decrease" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1657386233~hmac=97e72c7ecada0c13a08acabd0aa31540" />
-                        <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" />
+                        <img 
+                           alt="increase" 
+                           className="action-icons" 
+                           src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665680.png?token=exp=1657386291~hmac=7a60a6216654ef7eb265efca01251c06" 
+                           onClick={this.increaseQuantity}
+                        />
+                        <img 
+                           alt="decrease" 
+                           className="action-icons" src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1657386233~hmac=97e72c7ecada0c13a08acabd0aa31540" 
+                        />
+                        <img 
+                           alt="delete" 
+                           className="action-icons" 
+                           src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" 
+                        />
                     </div>
-
                 </div>
             </div>
         );
