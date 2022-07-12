@@ -10,24 +10,24 @@ class CartItem extends React.Component {
             img: ''
         }
        // this.increaseQuantity = this.increaseQuantity.bind(this);
-       this.testing();
+    //    this.testing();
     }
 
     // function for quantity upto date after 5 sec to 100
-    testing (){
-        const promise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve('done');
-            }, 2000);
-        })
+    // testing (){
+    //     const promise = new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             resolve('done');
+    //         }, 2000);
+    //     })
 
-        promise.then(() => {
-            // setState acts like a synchronus call
-            this.setState({ qty: 100 });
+    //     promise.then(() => {
+    //         // setState acts like a synchronus call
+    //         this.setState({ qty: 100 });
 
-            console.log('state', this.state);
-        });
-    }
+    //         console.log('state', this.state);
+    //     });
+    // }
 
     increaseQuantity = () => {
         // this.state.qty += 1;
@@ -70,6 +70,8 @@ class CartItem extends React.Component {
             return {
                 qty: prevState.qty - 1
             }
+        }, () => {
+            console.log('this.state', this.state);
         });
     }
     render(){
