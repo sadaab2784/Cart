@@ -6,7 +6,7 @@ class CartItem extends React.Component {
         this.state = {
             price: 999,
             title: 'Phone',
-            qty: 1,
+            qty: 0,
             img: ''
         }
        // this.increaseQuantity = this.increaseQuantity.bind(this);
@@ -16,15 +16,42 @@ class CartItem extends React.Component {
         // this.state.qty += 1;
         // console.log('this', this.state);
 
-        //setState form 1
+        //setState form 1 (here we define the same function object more than one)
+        // lets check if the qty increase by 5 , it doesn't change the quantity(because of merging )
+        // this.setState({
+        //     qty: this.state.qty + 5
+        // });
+
+        // it only render the last function object, it doesn't matter what's the previous object is it...
         // this.setState({
         //     qty: this.state.qty + 1
+        // }, () => {
+        //     console.log('this.state', this.state);
         // });
+
+
+        //setState form 2: - if prevState required use this
+        // if the callback function more than one , it will render all the state function...
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        }, () => {
+            console.log('this.state', this.state);
+        });
+    }
+
+    decreaseQuantity = () => {
+        const { qty } = this.state;
+
+        if (qty == 0){
+            return;
+        }
 
         //setState form 2: - if prevState required use this
         this.setState((prevState) => {
             return {
-                qty: prevState.qty + 1
+                qty: prevState.qty - 1
             }
         });
     }
@@ -49,7 +76,9 @@ class CartItem extends React.Component {
                         />
                         <img 
                            alt="decrease" 
-                           className="action-icons" src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1657386233~hmac=97e72c7ecada0c13a08acabd0aa31540" 
+                           className="action-icons" 
+                           src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1657386233~hmac=97e72c7ecada0c13a08acabd0aa31540" 
+                           onClick={this.decreaseQuantity}
                         />
                         <img 
                            alt="delete" 
