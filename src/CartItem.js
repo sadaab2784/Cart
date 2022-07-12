@@ -113,8 +113,8 @@ class CartItem extends React.Component {
 
 const styles = {
     image: {
-        height: 110,
-        width: 110,
+        height: 150,
+        width: 150,
         borderRadius: 4,
         background: '#ccc'
     }
