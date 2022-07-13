@@ -64,6 +64,17 @@ class Cart extends React.Component {
         })
     }
 
+    // for delete the product
+    handleDeleteProduct = (id) => {
+        const { products } = this.state;
+
+        const items = products.filter((item) => item.id !== id);
+
+        this.setState({
+            products: items
+        })
+    }
+
     render (){
         const { products } = this.state;
         return (
@@ -75,6 +86,7 @@ class Cart extends React.Component {
                              key={product.id} 
                              onIncreaseQuantity = {this.handleIncreaseQuantity}
                              onDecreaseQuantity = {this.handleDecreaseQuantity}
+                             onDeleteProduct = {this.handleDeleteProduct}
                             //  func={() => console.log('saga')}
                             //  isloggedin={false}
                             //  jsx={<h1>Test</h1>}
