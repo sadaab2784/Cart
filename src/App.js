@@ -49,6 +49,10 @@ componentDidMount () {
   // here is onSnapshot called whenever something changes in our product collection(without refereshing the browser it will update)
    this.db
     .collection('products')
+    // .where('price', '==', 999)
+    // .where('title', '==', 'Laptop')
+    .orderBy('price', 'desc')
+
     .onSnapshot((snapshot) => {
       console.log(snapshot);
 
