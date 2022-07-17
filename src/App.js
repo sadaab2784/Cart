@@ -17,11 +17,39 @@ class App extends React.Component {
 }
 
 componentDidMount () {
-  firebase
+  // firebase
+  //   .firestore()
+  //   .collection('products')
+  //   .get()
+  //   .then((snapshot) => {
+  //     console.log(snapshot);
+
+  //     snapshot.docs.map((doc) => {
+  //       console.log(doc.data());
+  //     });
+
+  //     //fetch the products using setState i.e browser will rerender and display all the products
+  //     // then firest we get the produsts
+  //     const products = snapshot.docs.map((doc) => {
+  //       const data = doc.data();
+
+  //       data['id'] = doc.id;
+  //       return data;
+  //     })
+
+  //     this.setState({
+  //       products: products,
+  //       loading: false
+  //     })
+  //   })
+
+
+
+  // here is onSnapshot called whenever something changes in our product collection(without refereshing the browser it will update)
+   firebase
     .firestore()
     .collection('products')
-    .get()
-    .then((snapshot) => {
+    .onSnapshot((snapshot) => {
       console.log(snapshot);
 
       snapshot.docs.map((doc) => {
