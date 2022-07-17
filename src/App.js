@@ -136,11 +136,24 @@ handleDecreaseQuantity = (product) => {
 handleDeleteProduct = (id) => {
     const { products } = this.state;
 
-    const items = products.filter((item) => item.id !== id);
+    // const items = products.filter((item) => item.id !== id);
 
-    this.setState({
-        products: items
-    })
+    // this.setState({
+    //     products: items
+    // })
+
+    // deleting products in Firebase
+    const docRef = this.db.collection('products').doc(id);
+
+    docRef
+      .delete()
+      // using promise
+      .then(() => {
+        console.log('Deleted successfully');
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      })
 }
 
 getCartCount = () => {
