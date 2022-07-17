@@ -74,20 +74,35 @@ componentDidMount () {
 
 // Increase the quantity using function
 handleIncreaseQuantity = (product) => {
-    console.log('Hey please Increase the qty of', product);
+    // console.log('Hey please Increase the qty of', product);
     const { products } = this.state;
     const index = products.indexOf(product);
 
-    products[index].qty += 1;
+    // products[index].qty += 1;
 
-    this.setState({
-        products: products
-    })
+    // this.setState({
+    //     products: products
+    // })
+
+    // updating products in firebase to increase the Quantity
+    const docRef = this.db.collection('products').doc(products[index].id);
+
+    docRef
+      .update({
+        qty: products[index].qty + 1
+      })
+      //using promise
+      .then(() => {
+        console.log('Updated successfully');
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      })
 }
 
 // Decrease the Quantity using function
 handleDecreaseQuantity = (product) => {
-    console.log('Hey please Decrease the qty of', product);
+    // console.log('Hey please Decrease the qty of', product);
     const { products } = this.state;
     const index = products.indexOf(product);
 
@@ -95,11 +110,26 @@ handleDecreaseQuantity = (product) => {
         return;
     }
 
-    products[index].qty -= 1;
+    // products[index].qty -= 1;
 
-    this.setState({
-        products: products
-    })
+    // this.setState({
+    //     products: products
+    // })
+
+     // updating products in firebase to increase the Quantity
+     const docRef = this.db.collection('products').doc(products[index].id);
+
+     docRef
+       .update({
+         qty: products[index].qty - 1
+       })
+       //using promise
+       .then(() => {
+         console.log('Updated successfully');
+       })
+       .catch((error) => {
+         console.log('Error:', error);
+       })
 }
 
 // for delete the product
